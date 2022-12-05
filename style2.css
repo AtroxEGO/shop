@@ -43,17 +43,27 @@
 }
 
 .buyingItemImage{
+    min-width: 631px;
     border-radius: 25px;
     height: 100%;
-    width: 40%;
+    width: 631px;
     background-size: cover;
     animation: breathing-white 3s infinite;
+    background-repeat: no-repeat;
     box-shadow: 0px 8px 16px 0px rgba(255, 255, 255, 0.4);
 }
 .buyingItemInfo{
     height: 100%;
-    width: 50%;
-    padding: 40px;
+    width: 100%;
+    padding: 40px 40px 0px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buyingItemNameContainer{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
 }
 .buyingItemName{
     width: fit-content;
@@ -107,7 +117,178 @@
     background-color: #2d2c2c;
     box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
-    padding: 5px 10px 5px 20px;
+    font-size: 40px;
+    padding: 15px 20px 15px 25px;
     width: fit-content;
     height: 20%;
+}
+.priceUSD>span{
+    font-size: 40px;
+}
+.buyingItemButtonContainer{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.buyingItemButtonContainer>a{
+    width: 100%;
+}
+.buyItemButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 40px;
+    width: 100%;
+    border-radius: 20px;
+    height: 50px;
+    /* margin-top: 50px; */
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(172, 49, 243);
+}
+.buyItemButton:hover{
+    background-color: rgb(152, 37, 219);
+}
+.buyItemButton:active{
+    background-color: rgb(141, 31, 205);
+}
+.right{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.ownedContainer{
+    margin-top: 120px;
+    height: 100%;
+    width: 100%;
+}
+.ownedTop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    width: 100%;
+    gap: 50vw;
+}
+.ownedTop>:first-child{
+    background-color: #2d2c2c;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 30px;
+}
+.ownedItemFrame{
+    width: 300px;
+    height: 395px;
+    background-color: #262626;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.ownedItemFrame:hover{
+    box-shadow: 0px 8px 16px 0px rgba(255, 255, 255, 0.2);   
+}
+.ownedTileContainer{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+    /* padding: 20px; */
+    flex-wrap: wrap;
+}
+.ownedItemImage{
+    height: 80%;
+    width: 100%;
+    background-size: cover;
+    border-radius: 20px;
+}
+.ownedItemBottom{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.ownedItemName{
+    width: 50%;
+    font-size: 30px;
+    font-weight: bold;
+}
+.ownedItemPrice{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    font-size: 25px;
+    
+}
+.ownedText:hover{
+    box-shadow: 0px 8px 10px 0px rgba(255, 255, 255, 0.2);
+}
+.ownedItemRealPrice{
+    width: 91%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-items: center;
+    color: #b2b2b2;
+}
+.deleteButton{
+    width: 9%;
+    /* background-color: red; */
+}
+.deleteButton:hover{
+    cursor: pointer;
+    color: #b5b4b4;
+}
+.ownedRealValue{
+    display: flex;
+    justify-content: flex-end;
+    background-color: #2d2c2c;
+    color: #b2b2b2;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: fit-content;
+    min-width: 30%; 
+    /* font-size: 10px; */
+}
+
+.ownedValue{
+    background-color: #2d2c2c;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.ownedRight{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.ownedRight>*:hover{
+    box-shadow: 0px 8px 10px 0px rgba(255, 255, 255, 0.2);
+}
+.popup{
+    display: none;
+    position: fixed;
+    background-color: #2d2c2c;
+    padding: 20px;
+    border-radius: 20px;
+    top: 60px;
+    right: 11%;
+}
+.noBitches{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
+    height: 400px;
 }

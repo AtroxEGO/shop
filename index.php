@@ -34,8 +34,15 @@
             $logged_in = false;
             if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
                 $logged_in=true;
+                $userID = $_SESSION['id'];
             }
             if($logged_in){
+                $sql = "SELECT * FROM admins WHERE user_id=$userID";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) === 1){
+                echo '<span class="material-symbols-outlined" id="NFTs"><a href="addNFT.php">cloud_upload</a></span>';
+                }
+                echo '<span class="material-symbols-outlined" id="NFTs"><a href="account.php?account='.$_SESSION['id'].'">apps</a></span>';
                 ?>
                 <h2>Hello, <?php echo $_SESSION['user_name']; ?></h2>
                 <a href="logout.php"><span class="material-symbols-outlined" id="logoutIcon">logout</span></a>
@@ -55,15 +62,16 @@
         </div>
     </header>
     <div class="itemsContainer">
-                <!-- <div class="itemFrame">
-                    <div class="itemImage" style="background-image: url('assets/524.png')";></div>
-                    <div class="itemBottom">
+        <div class="itemCardContainer">
+            <!-- <div class="itemFrame">
+                <div class="itemImage" style="background-image: url('assets/524.png')";></div>
+                <div class="itemBottom">
                         <div class="itemName">#524</div>
                         <div class="itemPrice">4.21 <img class="eth-symbol" src="assets/eth-white.png"></div>
                         <div class="buyButton"><a href="buy.php">Buy Now!</a></div>
                     </div>
                 </div> -->
-        <?php
+                <?php
         $sql = "SELECT * FROM products ORDER BY $sortingCollumn ASC ";
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($result)){
@@ -81,10 +89,18 @@
             echo "<div class='itemRealPrice'><span class='material-symbols-outlined'>downloading</span></div>";
             echo "<div class='buyButton'><a href=$buy_link>Buy Now!</a></div>";
             echo "</div>";
-        echo "</div>";
-  }
-        ?>
+            echo "</div>";
+        }
+        if(isset($_GET['prompt'])){
+            $productID = $_GET['prompt'];
+            $sql = "SELECT * FROM products WHERE product_id='$productID'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+        echo    '<div class="indexPromptContainer"><div class="indexPrompt">You Bought '.$row['product_name'].'</div></div>';
+        }
+            ?>
     </div>
+</div>
     <script src="apiRequests.js"></script>
     <script src="script.js"></script>
 </body>

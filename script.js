@@ -8,6 +8,8 @@ let buyButtons = document.getElementsByClassName("buyButton")
 let itemFrames = document.getElementsByClassName("itemFrame")
 let itemNames = document.getElementsByClassName("itemName")
 let itemBottom = document.getElementsByClassName("itemBottom")
+let indextPrompt = document.querySelector(".indexPrompt")
+let indexPromptContainer = document.querySelector(".indexPromptContainer")
 
 function searchBarHandler(){
   let input, filter, txtValue;
@@ -24,3 +26,8 @@ function searchBarHandler(){
     }
   }
 }
+
+indexPromptContainer.addEventListener("click", function(){
+  indexPromptContainer.innerHTML = "";
+  indexPromptContainer.style.display = "none"
+})
