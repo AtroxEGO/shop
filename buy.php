@@ -30,56 +30,52 @@
                 $logged_in=true;
             }
             if($logged_in){
+                echo '<span class="material-symbols-outlined" id="NFTs"><a href="account.php?account='.$_SESSION['id'].'">apps<a></span>';
                 ?>
                 <h2>Hello, <?php echo $_SESSION['user_name']; ?></h2>
                 <a href="logout.php"><span class="material-symbols-outlined" id="logoutIcon">logout</span></a>
             <?php
-            } else { ?>
-                <div class="accountButtons">
-                <div class="login"><a href="login.php">
-                <span class="material-symbols-outlined">login</span>
-                Login
-                </div></a>
-                <div class="register"><a href="register.php">
-                <span class="material-symbols-outlined">person_add</span>
-                Register
-                </div></a>
-                </div>
-            <?php } ?>
+            } else {
+                header("Location: login.php?error=You Must Be Logged In!");
+                exit();
+            } ?>
         </div>
     </header>
     <div class="container">
     <?php
     if(isset($_GET['id'])) { 
     $id = $_GET['id'];
+    $sql = "SELECT * FROM products WHERE product_id=$id";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result)
     ?>
-    <div class="buingItemCard">
-        <div class="buyingItemImage" style='background-image: url(assets/524.png)'></div>
-        <div class="buyingItemInfo">
-        <div class="buyingItemName">#524</div>
-        <div class="pricesContainer">
-            <div class="prices">
-                <div class="priceETH">71.71<img class='eth-symbol' id="eth-symbol" src='assets/eth-white.png'></div>
-                <div class="priceUSD">111<span class='material-symbols-outlined'> attach_money</span></div>
-            </div>
-        </div>
-
-
-    </div>
-    </div>
+    <?php
+    echo "<div class='buingItemCard'>";
+    echo    '<div class="buyingItemImage" style="background-image: url(assets/'.$row["product_image"].')"></div>';
+    echo    '<div class="right">';
+    echo        '<div class="buyingItemInfo">';
+    echo            '<div class="buyingItemNameContainer">';
+    echo                '<div class="buyingItemName">'.$row["product_name"].'</div>';
+    echo            '</div>';
+    echo            '<div class="pricesContainer">';
+    echo                '<div class="prices">';
+    echo                    '<div class="priceETH"><span class="itemPriceValue">'.$row["product_price"].'</span><img class="eth-symbol" id="eth-symbol" src="assets/eth-white.png"></div>';
+    echo                    '<div class="priceUSD"><span class="material-symbols-outlined">downloading</span></div>';
+    echo                '</div>';
+    echo            '</div>';
+    echo        '</div>';
+    echo        '<div class="buyingItemButtonContainer">';
+    echo            '<a href="buyAction.php?item='.$id.'"><div class="buyItemButton">Buy Now!</div></a>';
+    echo        '</div>';
+    echo    '</div>';
+    echo '</div>';
+    ?>
     
+
+
+
+
     
-
-
-
-
-
-
-
-
-
-
-
     <?php } else { ?>
      <div class='errorInfo'>
         <p> ERROR 404 </p>
@@ -87,5 +83,6 @@
     </div> 
      <?php } ?>
     </div>
+    <script src="apiRequests2.js"></script>
 </body>
 </html>
