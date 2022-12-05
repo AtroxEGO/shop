@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 01:10 AM
+-- Generation Time: Dec 05, 2022 at 09:15 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -24,16 +24,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Table structure for table `admins`
 --
 
-CREATE TABLE `orders` (
-  `order_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_name` varchar(20) NOT NULL,
-  `product_price` float NOT NULL,
-  `product_id` int(11) NOT NULL
+CREATE TABLE `admins` (
+  `admin_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`admin_id`, `user_id`) VALUES
+(1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `owned`
+--
+
+CREATE TABLE `owned` (
+  `owned_id` int(11) NOT NULL,
+  `owned_name` varchar(20) NOT NULL,
+  `owned_price` varchar(20) NOT NULL,
+  `owned_image` varchar(20) NOT NULL,
+  `owner_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `owned`
+--
+
+INSERT INTO `owned` (`owned_id`, `owned_name`, `owned_price`, `owned_image`, `owner_id`) VALUES
+(6, '#1971', '70.69', '1971.png', 6),
+(24, '#111', '21.2', '1560_Panik.png', 2);
 
 -- --------------------------------------------------------
 
@@ -58,7 +84,8 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_
 (3, '#4306', 74.8, '4306.png'),
 (4, '#7292', 69.69, '7292.png'),
 (5, '#7873', 73.76, '7873.png'),
-(6, '#2825', 74.99, '2825.png');
+(6, '#2825', 74.99, '2825.png'),
+(15, '#111', 21.2, '1560_Panik.png');
 
 -- --------------------------------------------------------
 
@@ -88,14 +115,16 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_password`, `user_email`, `use
 --
 
 --
--- Indexes for table `orders`
+-- Indexes for table `admins`
 --
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `product_price` (`product_price`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `product_name` (`product_name`) USING BTREE;
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `owned`
+--
+ALTER TABLE `owned`
+  ADD PRIMARY KEY (`owned_id`);
 
 --
 -- Indexes for table `products`
@@ -114,16 +143,22 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT for table `admins`
 --
-ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `admins`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `owned`
+--
+ALTER TABLE `owned`
+  MODIFY `owned_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
